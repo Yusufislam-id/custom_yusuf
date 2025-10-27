@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- List view untuk Purchase Order di Sales Order -->
+    <record id="view_purchase_order_list_from_so" model="ir.ui.view">
+        <field name="name">purchase.order.list.from.so</field>
+        <field name="model">purchase.order</field>
+        <field name="type">list</field>
+        <field name="arch" type="xml">
+            <list create="false" delete="false" edit="false">
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="date_order"/>
+                <field name="amount_total"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_order_form_inherit_so_po" model="ir.ui.view">
+        <field name="name">sale.order.form.inherit.so.po</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            
+            <!-- Tambahkan Request Vendor dan No Kontrak setelah Payment Terms -->
+            <xpath expr="//field[@name='payment_term_id']" position="after">
+                <field name="request_vendor_id" 
+                       options="{'no_create': True, 'no_open': True}"/>
+                <field name="no_kontrak"/>
+            </xpath>
+            
+            <!-- Tambahkan With PO setelah sale_order_template_id -->
+            <xpath expr="//field[@name='sale_order_template_id']" position="after">
+                <field name="with_po"/>
+            </xpath>
+            
+            <!-- Tambahkan Tab Purchase Orders setelah page order_lines -->
+            <xpath expr="//page[@name='order_lines']" position="after">
+                <page string="Purchase Orders" name="purchase_orders" 
+                      invisible="not with_po">
+                    <field name="purchase_order_ids" 
+                           nolabel="1"
+                           context="{'tree_view_ref': 'custom_yusuf.view_purchase_order_list_from_so'}"/>
+                    <group>
+                        <field name="purchase_order_count" string="Total Purchase Orders"/>
+                    </group>
+                </page>
+            </xpath>
+            
+        </field>
+    </record>
+
+</odoo>

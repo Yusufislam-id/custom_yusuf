@@ -9,15 +9,9 @@
     'author': 'Yusuf',
     'website': 'https://github.com/Yusufislam-id/custom_yusuf',
     'license': 'LGPL-3',
-    'depends': ['sale',
-        'purchase',],
-    'assets': {
-        'web.assets_backend': [
-            
-        ],
-    },
+    'depends': ['sale', 'purchase',],
     'data': [
-        
+        'views/sale_order_views.xml',
     ],
     'installable': True,
     'application': False,

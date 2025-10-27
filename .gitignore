@@ -1,0 +1,29 @@
+# Python cache files
+__pycache__/
+*.py[cod]
+
+# Odoo specific files
+*.log
+*.pot
+*.pyc
+*.pyo
+*.egg-info/
+*.egg
+
+# Environment files
+.env
+*.env
+
+# Database files
+*.db
+*.sqlite3
+
+# Compiled files
+*.so
+*.o
+
+# Local configuration files
+*.local
+
+# VS Code settings
+.vscode/

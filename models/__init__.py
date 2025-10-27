@@ -1,1 +1,1 @@
-from . import sale_purchase_connector
+from . import sale_order
