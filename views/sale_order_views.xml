@@ -40,7 +40,7 @@
                       invisible="not with_po">
                     <field name="purchase_order_ids" 
                            nolabel="1"
-                           context="{'tree_view_ref': 'custom_yusuf.view_purchase_order_list_from_so'}"/>
+                           context="{'tree_view_ref': 'custom_yusuf.view_purchase_order_tree_from_so'}"/>
                     <group>
                         <field name="purchase_order_count" string="Total Purchase Orders"/>
                     </group>
